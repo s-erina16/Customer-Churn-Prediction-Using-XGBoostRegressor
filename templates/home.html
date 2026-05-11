@@ -1,0 +1,287 @@
+{%include 'navbar.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChurnPredict Pro | Customer Churn Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #66033c;
+            --secondary: #cad183;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+       /* Hero Section */
+      /* HERO SECTION WITH BACKGROUND IMAGE */
+.hero {
+  background-image: url('/static/image/background.png'); /* replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  color: white;
+  position: relative;
+}
+
+/* Optional overlay for better text visibility */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark transparent overlay */
+  z-index: 0;
+  border-radius: 0;
+}
+
+/* Text & Button Styling */
+.hero p {
+  max-width: 800px;
+  font-size: 20px;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+.hero-buttons .btn {
+  background: #66033c;
+  color: #cad183;
+  border: none;
+  font-size: 20px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+  position: relative;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.hero-buttons .btn:hover {
+  background: #cad183;
+  transform: translateY(-3px);
+  color: black;
+}
+
+        
+        /* Metrics Section */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 100px auto;
+        }
+        
+        .metric {
+            background: #66033c;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: #cad183;
+            transition: transform 0.3s ease;
+            color: #cad183;
+        }
+        
+        .metric:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+      
+/* Features Section */
+.features-section {
+  background-color: #f9fbfd;
+ 
+  text-align: center;
+   margin-top: 90px;
+}
+.section-title h1 {
+  font-size: 32px;
+  font-weight: 900;
+  color: black;
+  font-variant: small-caps;
+ 
+}
+
+.section-title p {
+  font-size: 20px;
+  color: black;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background:#66033c;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #cad183;
+        }
+         .feature-card p{
+            color: #cad183;
+            text-align: justify;
+        }
+       
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .charts {
+                grid-template-columns: 1fr;
+            }
+            
+            .customer-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+        <!-- Hero Section -->
+        <section class="hero">
+            
+            <p>Customer churn (also known as customer attrition) refers to when a customer (player, subscriber, user, etc.) ceases his or her relationship with a company. Online businesses typically treat a customer as churned once a particular amount of time has elapsed since the customer’s last interaction with the site or service. The full cost of churn includes both lost revenue and the marketing costs involved with replacing those customers with new ones. Reducing churn is a key business goal of every online business.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Start Free Trial</button>
+              
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">14.8%</div>
+                <div class="metric-label">Current Churn Rate</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">96.3%</div>
+                <div class="metric-label">Prediction Accuracy</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">28%</div>
+                <div class="metric-label">At-Risk Customers</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">142K</div>
+                <div class="metric-label">Monthly Revenue at Risk</div>
+            </div>
+        </div>
+
+     <!-- Features Section -->
+        <section class="features-section">
+            <div class="section-title">
+                <h1>How Our Platform Works</h1>
+                <p>Churn prediction modeling techniques attempt to understand the precise customer behaviors and attributes which signal the risk and timing of customer churn. </p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Integration</h3>
+                    <p>Churn prediction data integration is the process of combining various customer data sources, such as purchase history, service usage, and feedback, to build a unified dataset for analyzing and predicting which customers are likely to leave a service.  </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Analysis</h3>
+                    <p>Churn prediction AI analysis is the process of using artificial intelligence and machine learning to identify customers who are likely to stop using a service or product. </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Predictive Scoring</h3>
+                    <p>Churn predictive scoring is a system that analyzes customer behavior to assign a score indicating their likelihood of leaving a company or service.  </p>
+                </div>
+             
+            </div>
+        </section>
+
+   
+</body>
+</html>

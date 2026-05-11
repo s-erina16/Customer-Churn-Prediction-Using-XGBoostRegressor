@@ -1,0 +1,184 @@
+{%include 'navbar.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Churn</title>
+    <style>
+        /* General Page Style */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  background-image: url('/static/image/predict.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 130vh;
+ 
+}
+
+/* Form Container */
+.form-container {
+  background-color: #ffffff;
+  color: black;
+  padding: 40px;
+  border-radius: 12px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 1100px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Title */
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #66033c;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+/* Two-Column Layout */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels and Inputs */
+label {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid black;
+  font-size: 14px;
+}
+
+/* Submit Button */
+.submit-btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+input[type="submit"] {
+  background-color: #66033c;
+  color: #cad183;
+  border: none;
+  padding: 12px 50px;
+  border-radius: 6px;
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-variant: small-caps;
+}
+
+input[type="submit"]:hover {
+  background-color: #cad183;
+  color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-column {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 95%;
+    padding: 25px;
+  }
+}
+
+    </style>
+</head>
+<body>
+   
+  <div class="form-container">
+    <h1>Enter Customer Details</h1>
+    <form method="post">
+      <div class="form-row">
+        <div class="form-column">
+          <label>State</label>
+          <input type="text" name="state" required>
+
+          <label>Account Length</label>
+          <input type="number" name="account_length" step="0.1" required>
+
+          <label>Area Code</label>
+          <input type="number" name="area_code" required>
+
+          <label>International Plan (Yes/No)</label>
+          <input type="text" name="international_plan" required>
+
+          <label>Voice Mail Plan (Yes/No)</label>
+          <input type="text" name="voice_mail_plan" required>
+
+          <label>Number of Voice Mail Messages</label>
+          <input type="number" name="number_vmail_messages" step="0.1" required>
+
+          <label>Total Day Minutes</label>
+          <input type="number" name="total_day_minutes" step="0.1" required>
+
+          <label>Total Day Calls</label>
+          <input type="number" name="total_day_calls" required>
+
+          <label>Total Day Charge</label>
+          <input type="number" name="total_day_charge" step="0.01" required>
+        </div>
+
+        <div class="form-column">
+          <label>Total Eve Minutes</label>
+          <input type="number" name="total_eve_minutes" step="0.1" required>
+
+          <label>Total Eve Calls</label>
+          <input type="number" name="total_eve_calls" required>
+
+          <label>Total Eve Charge</label>
+          <input type="number" name="total_eve_charge" step="0.01" required>
+
+          <label>Total Night Minutes</label>
+          <input type="number" name="total_night_minutes" step="0.1" required>
+
+          <label>Total Night Calls</label>
+          <input type="number" name="total_night_calls" required>
+
+          <label>Total Night Charge</label>
+          <input type="number" name="total_night_charge" step="0.01" required>
+
+          <label>Total Intl Minutes</label>
+          <input type="number" name="total_intl_minutes" step="0.1" required>
+
+          <label>Total Intl Calls</label>
+          <input type="number" name="total_intl_calls" required>
+
+          <label>Total Intl Charge</label>
+          <input type="number" name="total_intl_charge" step="0.01" required>
+
+          <label>Customer Service Calls</label>
+          <input type="number" name="customer_service_calls" required>
+        </div>
+      </div>
+
+      <div class="submit-btn">
+        <input type="submit" value="Predict">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+

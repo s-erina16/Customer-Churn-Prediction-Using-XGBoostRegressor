@@ -1,0 +1,366 @@
+{%include 'navbar.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Customer Churn Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        :root {
+            --primary: #66033c;
+            --secondary: #cad183;
+            --accent: #ff6b6b;
+        }
+        
+        body {
+         
+            color: var(--secondary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+      .page-header {
+  background-image: url('/static/image/about.png'); /* 🔹 Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: add a dark overlay for better text readability */
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* semi-transparent overlay */
+  z-index: 0;
+}
+
+/* Text styling */
+.page-header h1 {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  z-index: 1;
+  position: relative;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.page-header p {
+  max-width: 950px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #f0f0f0;
+  z-index: 1;
+  position: relative;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            margin: 90px auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background:#66033c;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+            color: black;
+        }
+        
+      
+        /* RIGHT SIDE: IMAGE */
+.churn-visual {
+  flex: 1 1 450px;
+  display: flex;
+  justify-content: center;
+}
+
+.churn-visual img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.churn-visual img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+        .churn-explanation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .churn-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color:  #66033c;
+            font-weight: 900;
+        }
+        
+        .churn-content p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            color: black;
+            text-align: justify;
+            font-size: 1.2rem;
+        }
+        
+        
+        
+        .visual-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .visual-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+       
+        /* Key Factors */
+        .factors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .factor-category {
+            background: #66033c;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .factor-category h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color:#66033c ;
+        }
+        
+        .factor-list {
+            list-style: none;
+        }
+        
+        .factor-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+        
+        .factor-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        span{
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .process-steps, .benefits, .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .importance-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .churn-explanation, .factors {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .process-steps, .benefits, .stats, .importance-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>ABOUT</h1>
+            <p>Churn analysis helps you identify pain points throughout the entire customer journey. Understanding those pain points then opens up avenues to improve your products, services, and communication.Sure, customer churn is inevitable. But if you see it as an opportunity to learn, improve customer retention, and close any leaks in your revenue stream, you’ll be able to take your subscription business to the next level. </p>
+        </header>
+
+        <!-- What is Churn Prediction -->
+         <div class="container">
+        <section class="content-section">
+            <div class="churn-explanation">
+                <div class="churn-content">
+                    <h2>What is Customer Churn Prediction?</h2>
+                    <p>Customer churn prediction is the process of identifying which customers are likely to stop doing business with a company. By analyzing customer behavior and historical data, businesses can proactively address issues before customers decide to leave.</p>
+                    <p>Instead of reacting to customer loss after it happens, churn prediction enables companies to take preventive measures, improving customer satisfaction and retention rates.</p>
+                </div>
+                <div class="churn-visual">
+                   <img src="/static/image/about1.png">
+            </div>
+            </div>
+        </section>
+
+
+     
+
+     
+        <!-- Key Factors -->
+        <section class="content-section">
+            <div class="section-title">
+                <h2 style="color: #66033c; font-variant: small-caps;">Common Churn Indicators</h2>
+                
+            </div>
+            
+            <div class="factors">
+                <div class="factor-category">
+                    <h3>Behavioral Indicators</h3>
+                    <ul class="factor-list">
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <span>Decreased product usage</span>
+                        </li>
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <span>Reduced login frequency</span>
+                        </li>
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <span>Fewer support interactions</span>
+                        </li>
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>Declining satisfaction scores</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="factor-category">
+                    <h3>Business Indicators</h3>
+                    <ul class="factor-list">
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <span>Payment issues or declines</span>
+                        </li>
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <span>Contract renewal approaching</span>
+                        </li>
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span>Competitor offerings in market</span>
+                        </li>
+                        <li class="factor-item">
+                            <div class="factor-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <span>Recent price changes</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+     
+
+</body>
+</html>
